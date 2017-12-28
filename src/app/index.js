@@ -1,50 +1,39 @@
+//REACT
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+//React router
+//import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
 import { applyMiddleware, createStore } from 'redux';
+
+//Reducers
 import reducers from './reducers/index';
+
+//Actions
 import { addToCart } from './actions/cartActions';
 import { postBooks, deleteBooks, updateBooks } from './actions/booksActions';
+
+//Middleware
 import { logger } from 'redux-logger';
 
 const middleware = applyMiddleware(logger);
 const store = createStore(reducers, middleware);
+//React Components
+import BooksList from './components/pages/BooksList';
+import BooksForm from './components/pages/BooksForm';
+import Cart from './components/pages/Cart';
+import Menu from './components/Menu';
+import Footer from './components/Footer';
+import Main from './Main';
 
-//Post a book
-store.dispatch(
-  postBooks([
-    {
-      id: 1,
-      title: 'A flying man',
-      description: 'Hey bro',
-      price: 44.5
-    },
-    {
-      id: 2,
-      title: 'I too had a love story',
-      description: 'My Nigga',
-      price: 776
-    },
-    {
-      id: 3,
-      title: 'Stranger Things',
-      description: 'American web television series',
-      price: 44.5
-    }
-  ])
+render(
+  <Provider store={store}>
+    <div className="container">
+      <Menu />
+      <BooksList />
+      <Footer />
+    </div>
+  </Provider>,
+  window.document.getElementById('app')
 );
-
-//DELETE a book
-store.dispatch(
-  deleteBooks({
-    id: 1
-  })
-);
-
-// Update Books
-store.dispatch(
-  updateBooks({
-    id: 2,
-    title: 'Xmen'
-  })
-);
-
-//CART operations
-store.dispatch(addToCart([{ id: 1 }]));

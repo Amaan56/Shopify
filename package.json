@@ -16,8 +16,10 @@
   "dependencies": {
     "copyfiles": "^1.2.0",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
+    "react-router": "^3.0.2",
     "redux": "^3.7.2"
   },
   "devDependencies": {

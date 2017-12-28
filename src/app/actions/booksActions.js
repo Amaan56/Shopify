@@ -1,3 +1,9 @@
+//GET Books
+export function getBooks() {
+  return {
+    type: 'GET_BOOKS'
+  };
+}
 //POST A book
 export function postBooks(book) {
   return {
